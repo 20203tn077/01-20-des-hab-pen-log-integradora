@@ -2,6 +2,9 @@ Algoritmo Integradora
 	//Navegación
 	Definir opcionMenu Como Entero
 	
+	//Control
+	Definir llaveValida Como Logico
+	
 	//Variables para leer cadena inicial y convertirla en número
 	Definir textoIngresado, lectorCadena Como Cadena
 	Definir marcador1, marcador2, puntero, limiteCadena, cantidadDeNumeros, moduloCantidadDeNumeros, columnasMensaje Como Entero
@@ -69,28 +72,35 @@ Algoritmo Integradora
 						//Calcular determinante de la llave
 						determinante = ((llaveTranspuesta(1,1)*llaveTranspuesta(2,2)*llaveTranspuesta(3,3))+(llaveTranspuesta(2,1)*llaveTranspuesta(3,2)*llaveTranspuesta(1,3))+(llaveTranspuesta(1,2)*llaveTranspuesta(2,3)*llaveTranspuesta(3,1)))-((llaveTranspuesta(1,3)*llaveTranspuesta(2,2)*llaveTranspuesta(3,1))+(llaveTranspuesta(1,2)*llaveTranspuesta(2,1)*llaveTranspuesta(3,3))+(llaveTranspuesta(2,3)*llaveTranspuesta(3,2)*llaveTranspuesta(1,1)))
 						
-						//Calcular adjunta de la transpuesta de la matriz
-						llaveTranspuestaAdjunta(1,1) = (llaveTranspuesta(2,2)*llaveTranspuesta(3,3))-(llaveTranspuesta(2,3)*llaveTranspuesta(3,2))
-						llaveTranspuestaAdjunta(1,2) = -((llaveTranspuesta(2,1)*llaveTranspuesta(3,3))-(llaveTranspuesta(2,3)*llaveTranspuesta(3,1)))
-						llaveTranspuestaAdjunta(1,3) = (llaveTranspuesta(2,1)*llaveTranspuesta(3,2))-(llaveTranspuesta(2,2)*llaveTranspuesta(3,1))
-						llaveTranspuestaAdjunta(2,1) = -((llaveTranspuesta(1,2)*llaveTranspuesta(3,3))-(llaveTranspuesta(1,3)*llaveTranspuesta(3,2)))
-						llaveTranspuestaAdjunta(2,2) = (llaveTranspuesta(1,1)*llaveTranspuesta(3,3))-(llaveTranspuesta(1,3)*llaveTranspuesta(3,1))
-						llaveTranspuestaAdjunta(2,3) = -((llaveTranspuesta(1,1)*llaveTranspuesta(3,2))-(llaveTranspuesta(1,2)*llaveTranspuesta(3,1)))
-						llaveTranspuestaAdjunta(3,1) = (llaveTranspuesta(1,2)*llaveTranspuesta(2,3))-(llaveTranspuesta(1,3)*llaveTranspuesta(2,2))
-						llaveTranspuestaAdjunta(3,2) = -((llaveTranspuesta(1,1)*llaveTranspuesta(2,3))-(llaveTranspuesta(1,3)*llaveTranspuesta(2,1)))
-						llaveTranspuestaAdjunta(3,3) = (llaveTranspuesta(1,1)*llaveTranspuesta(2,2))-(llaveTranspuesta(1,2)*llaveTranspuesta(2,1))
-						
-						//Calcular inversa de la llave
-						para fila = 1 Hasta  3 Con Paso 1 Hacer
-							para columna = 1 Hasta  3 Con Paso 1 Hacer
-								llaveInversa(fila,columna) = llaveTranspuestaAdjunta(fila,columna)/determinante
+						Si determinante <> 0 Entonces
+							//Calcular adjunta de la transpuesta de la matriz
+							llaveTranspuestaAdjunta(1,1) = (llaveTranspuesta(2,2)*llaveTranspuesta(3,3))-(llaveTranspuesta(2,3)*llaveTranspuesta(3,2))
+							llaveTranspuestaAdjunta(1,2) = -((llaveTranspuesta(2,1)*llaveTranspuesta(3,3))-(llaveTranspuesta(2,3)*llaveTranspuesta(3,1)))
+							llaveTranspuestaAdjunta(1,3) = (llaveTranspuesta(2,1)*llaveTranspuesta(3,2))-(llaveTranspuesta(2,2)*llaveTranspuesta(3,1))
+							llaveTranspuestaAdjunta(2,1) = -((llaveTranspuesta(1,2)*llaveTranspuesta(3,3))-(llaveTranspuesta(1,3)*llaveTranspuesta(3,2)))
+							llaveTranspuestaAdjunta(2,2) = (llaveTranspuesta(1,1)*llaveTranspuesta(3,3))-(llaveTranspuesta(1,3)*llaveTranspuesta(3,1))
+							llaveTranspuestaAdjunta(2,3) = -((llaveTranspuesta(1,1)*llaveTranspuesta(3,2))-(llaveTranspuesta(1,2)*llaveTranspuesta(3,1)))
+							llaveTranspuestaAdjunta(3,1) = (llaveTranspuesta(1,2)*llaveTranspuesta(2,3))-(llaveTranspuesta(1,3)*llaveTranspuesta(2,2))
+							llaveTranspuestaAdjunta(3,2) = -((llaveTranspuesta(1,1)*llaveTranspuesta(2,3))-(llaveTranspuesta(1,3)*llaveTranspuesta(2,1)))
+							llaveTranspuestaAdjunta(3,3) = (llaveTranspuesta(1,1)*llaveTranspuesta(2,2))-(llaveTranspuesta(1,2)*llaveTranspuesta(2,1))
+							
+							//Calcular inversa de la llave
+							para fila = 1 Hasta  3 Con Paso 1 Hacer
+								para columna = 1 Hasta  3 Con Paso 1 Hacer
+									llaveInversa(fila,columna) = llaveTranspuestaAdjunta(fila,columna)/determinante
+								FinPara
 							FinPara
-						FinPara
+						SiNo
+							llaveValida = Falso
+							Escribir "Llave inválida, no es invertible"
+							Esperar 1 Segundos
+						FinSi
 					SiNo
-						Escribir "Llave inválida"
+						llaveValida = Falso
+						Escribir "Llave inválida, no tiene 9 números"
 						Esperar 1 Segundos
 					FinSi
-				Hasta Que CantidadDeNumeros = 9
+				Hasta Que llaveValida = Verdadero
 			2:
 				opcionMenu = 3
 			De Otro Modo:
