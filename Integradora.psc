@@ -1,8 +1,8 @@
 Algoritmo Integradora
-	//NavegaciÛn
+	//Navegaci√≥n
 	Definir opcionMenu Como Entero
 	
-	//Variables para leer cadena inicial y convertirla en n˙mero
+	//Variables para leer cadena inicial y convertirla en n√∫mero
 	Definir textoIngresado, lectorCadena Como Cadena
 	Definir marcador1, marcador2, puntero, limiteCadena, cantidadDeNumeros, moduloCantidadDeNumeros, columnasMensaje Como Entero
 	Definir lectorCaracter Como Caracter
@@ -17,26 +17,26 @@ Algoritmo Integradora
 	Definir conversorCaracter Como Caracter
 	
 	Limpiar Pantalla
-	Escribir "TAREA INTEGRADORA - CRIPTOGRAFÕA"
+	Escribir "TAREA INTEGRADORA - CRIPTOGRAF√çA"
 	Escribir ""
-	Escribir "Este programa descifra mensajes encriptados de longitud variable utilizando una llave compuesta por nueve n˙meros"
+	Escribir "Este programa descifra mensajes encriptados de longitud variable utilizando una llave compuesta por nueve n√∫meros"
 	Escribir ""
 	Escribir "Presione una tecla para continuar"
 	Esperar Tecla
 	
-	hacer
+	Repetir
 		Limpiar Pantalla
-		Escribir "TAREA INTEGRADORA - CRIPTOGRAFÕA"
+		Escribir "TAREA INTEGRADORA - CRIPTOGRAF√çA"
 		Escribir ""
-		Escribir "Seleccione una opciÛn"
+		Escribir "Seleccione una opci√≥n"
 		Escribir "1.- Ingresar llave"
 		Escribir "2.- Salir"
 		Leer opcionMenu
 		Segun opcionMenu hacer
 			1:
-				Hacer
+				Repetir
 					Limpiar Pantalla
-					Escribir "Ingrese la llave, separando cada n˙mero con un espacio"
+					Escribir "Ingrese la llave, separando cada n√∫mero con un espacio"
 					Leer textoIngresado
 					
 					//Establecer longitud del mensaje
@@ -55,7 +55,7 @@ Algoritmo Integradora
 						textoIngresado = concatenar(textoIngresado," ")
 						Para fila = 1 Hasta 3 Con Paso 1 Hacer
 							Para columna = 1 Hasta 3 Con Paso 1 Hacer
-								hacer
+								Repetir
 									lectorCaracter = Subcadena(textoIngresado,puntero,puntero)
 									puntero = puntero + 1
 								Hasta Que (lectorCaracter == " ")
@@ -87,14 +87,14 @@ Algoritmo Integradora
 							FinPara
 						FinPara
 					SiNo
-						Escribir "Llave inv·lida"
+						Escribir "Llave inv√°lida"
 						Esperar 1 Segundos
 					FinSi
 				Hasta Que CantidadDeNumeros = 9
 			2:
 				opcionMenu = 3
 			De Otro Modo:
-				Escribir "OpciÛn inv·lida"
+				Escribir "Opci√≥n inv√°lida"
 				opcionMenu = 0
 				Esperar 1 Segundos
 		FinSegun
@@ -102,18 +102,18 @@ Algoritmo Integradora
 	
 	Mientras opcionMenu <> 3 Hacer
 		Limpiar Pantalla
-		Escribir "TAREA INTEGRADORA - CRIPTOGRAFÕA"
+		Escribir "TAREA INTEGRADORA - CRIPTOGRAF√çA"
 		Escribir ""
-		Escribir "Seleccione una opciÛn"
+		Escribir "Seleccione una opci√≥n"
 		Escribir "1.- Descifrar un mensaje"
 		Escribir "2.- Cambiar llave"
 		Escribir "3.- Salir"
 		Leer opcionMenu
 		Segun opcionMenu Hacer
 			1:
-				Hacer
+				Repetir
 					Limpiar Pantalla
-					Escribir "Ingrese el mensaje, separando cada n˙mero con un espacio"
+					Escribir "Ingrese el mensaje, separando cada n√∫mero con un espacio"
 					Leer textoIngresado
 					
 					//Establecer longitud del mensaje
@@ -136,7 +136,7 @@ Algoritmo Integradora
 						textoIngresado = concatenar(textoIngresado," ")
 						Para fila = 1 Hasta 3 Con Paso 1 Hacer
 							Para columna = 1 Hasta columnasMensaje Con Paso 1 Hacer
-								hacer
+								Repetir
 									lectorCaracter = Subcadena(textoIngresado,puntero,puntero)
 									puntero = puntero + 1
 								Hasta Que (lectorCaracter == " ")
@@ -220,17 +220,17 @@ Algoritmo Integradora
 						Escribir textoSalida
 						textoSalida = ""
 						Escribir ""
-						Escribir "Presione una tecla para volver al men˙"
+						Escribir "Presione una tecla para volver al men√∫"
 						Esperar Tecla
 					SiNo
-						Escribir "Mensaje inv·lido"
+						Escribir "Mensaje inv√°lido"
 						Esperar 1 Segundos
 					FinSi
 				Hasta Que moduloCantidadDeNumeros == 0
 			2:
-				Hacer
+				Repetir
 					Limpiar Pantalla
-					Escribir "Ingrese la llave, separando cada n˙mero con un espacio"
+					Escribir "Ingrese la llave, separando cada n√∫mero con un espacio"
 					Leer textoIngresado
 					
 					//Establecer longitud del mensaje
@@ -251,7 +251,7 @@ Algoritmo Integradora
 						textoIngresado = concatenar(textoIngresado," ")
 						Para fila = 1 Hasta 3 Con Paso 1 Hacer
 							Para columna = 1 Hasta 3 Con Paso 1 Hacer
-								hacer
+								Repetir
 									lectorCaracter = Subcadena(textoIngresado,puntero,puntero)
 									puntero = puntero + 1
 								Hasta Que (lectorCaracter == " ")
@@ -284,14 +284,14 @@ Algoritmo Integradora
 						FinPara
 						
 					SiNo
-						Escribir "Llave inv·lida"
+						Escribir "Llave inv√°lida"
 						Esperar 1 Segundos
 					FinSi
 				Hasta Que CantidadDeNumeros = 9
 			3:
 				
 			De Otro Modo:
-				Escribir "OpciÛn inv·lida"
+				Escribir "Opci√≥n inv√°lida"
 		FinSegun
 	Fin Mientras
 FinAlgoritmo
